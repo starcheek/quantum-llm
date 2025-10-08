@@ -26,12 +26,7 @@ pip install -r requirements.txt
 
 ## Quick Start
 
-1. **Setup the system**:
-   ```bash
-   quantum-llm setup
-   ```
-
-2. **Configure your settings** (edit `config.json`):
+1. **Configure your settings** (edit `config.json`):
    ```json
    {
      "neo4j": {
@@ -39,83 +34,69 @@ pip install -r requirements.txt
        "user": "neo4j",
        "password": "your_password"
      },
-     "openai": {
-       "api_key": "your_openai_api_key"
+     "llm": {
+       "openai_api_key": "your_openai_api_key"
      }
    }
    ```
 
-3. **Fetch research papers**:
+2. **Fetch research papers**:
    ```bash
-   quantum-llm fetch --target 4000
+   quantum-llm arxiv
    ```
 
-4. **Create knowledge graph**:
+3. **Create knowledge graph**:
    ```bash
    quantum-llm graph
    ```
 
-5. **Query your data**:
+4. **Query your data**:
    ```bash
    quantum-llm query "What are the latest developments in quantum computing?"
    ```
 
 ## Commands
 
-### `quantum-llm fetch`
-Fetch research papers from arXiv API.
-
-**Options:**
-- `--target`: Number of papers to fetch (default: 4000)
-- `--clean`: Clean existing data before fetching (default: true)
-- `--verbose`: Enable verbose output
+### `quantum-llm arxiv`
+Fetch research papers from arXiv API with intelligent tier-based distribution.
 
 **Example:**
 ```bash
-quantum-llm fetch --target 5000 --verbose
+quantum-llm arxiv
 ```
 
 ### `quantum-llm graph`
 Create knowledge graph from papers data.
 
-**Options:**
-- `--config`: Path to configuration file (default: config.json)
-- `--verbose`: Enable verbose output
-
 **Example:**
 ```bash
-quantum-llm graph --config my_config.json
+quantum-llm graph
 ```
 
 ### `quantum-llm query`
 Query the knowledge graph with natural language.
 
 **Arguments:**
-- `question`: The question to ask about your research data
+- `question`: The question to ask about your research data (optional - enters interactive mode if not provided)
 
 **Options:**
-- `--config`: Path to configuration file (default: config.json)
-- `--verbose`: Enable verbose output
+- `--graph`: Force graph mode
+- `--rag`: Force RAG mode  
+- `--all-papers`: Use all papers for RAG queries
 
-**Example:**
+**Examples:**
 ```bash
+# Interactive mode
+quantum-llm query
+
+# Direct question
 quantum-llm query "What are the main applications of quantum machine learning?"
-```
 
-### `quantum-llm status`
-Check the status of your quantum-llm system.
+# Force graph mode
+quantum-llm query --graph "Which year focused most on quantum computing?"
 
-**Example:**
-```bash
-quantum-llm status
-```
-
-### `quantum-llm setup`
-Initial setup for the quantum-llm system.
-
-**Example:**
-```bash
-quantum-llm setup
+# Force RAG with all papers
+quantum-llm query --rag --all-papers "Explain quantum machine learning advances"
 ```
 
 ## Configuration
