@@ -1,0 +1,83 @@
+{
+  "neo4j": {
+    "uri": "neo4j+s://your-instance.databases.neo4j.io",
+    "database": "neo4j",
+    "user": "neo4j",
+    "password": "your-password-here",
+    "constraints": {
+      "paper_doi_unique": "CREATE CONSTRAINT paper_doi IF NOT EXISTS FOR (p:Paper) REQUIRE p.doi IS UNIQUE",
+      "year_unique": "CREATE CONSTRAINT year_unique IF NOT EXISTS FOR (y:Year) REQUIRE y.year IS UNIQUE"
+    }
+  },
+  "data": {
+    "csv_path": "data/papers.csv",
+    "encoding": "utf-8"
+  },
+  "llm": {
+    "use_openai": true,
+    "openai_api_key": "sk-proj-your-openai-api-key-here",
+    "openai_model": "gpt-4o-mini",
+    "query_generation_temperature": 0.3,
+    "answer_generation_temperature": 0.1
+  },
+  "search": {
+    "max_search_queries": 5,
+    "max_papers_per_query": 50,
+    "max_context_papers": 10,
+    "max_source_papers": 5
+  },
+  "queries": {
+    "all_papers": "MATCH (p:Paper) RETURN p.doi as doi, p.title as title, p.abstract as abstract, toString(p.date) as date ORDER BY p.date DESC LIMIT 100",
+    "multi_search_template": "MATCH (p:Paper) WHERE {search_conditions} RETURN p.doi as doi, p.title as title, p.abstract as abstract, toString(p.date) as date ORDER BY p.date DESC LIMIT 50"
+  },
+  "prompts": {
+    "qa_template": "You are a concise research assistant.\nUse the provided context (paper titles/abstracts) to answer the user question.\nCite the DOIs of the most relevant papers at the end under \"Sources\".\nIf unsure, say you are unsure.\n\nQuestion:\n{question}\n\nContext:\n{context}"
+  },
+  "output": {
+    "show_sources": true,
+    "max_sources": 10
+  },
+  "categories": {
+    "tier1": [
+      "quant-ph",
+      "math-ph",
+      "cs.ET",
+      "cond-mat.mes-hall",
+      "cond-mat.supr-con",
+      "physics.optics",
+      "physics.comp-ph"
+    ],
+    "tier2": [
+      "cs.AR",
+      "cs.CE",
+      "cs.SE",
+      "cs.LG",
+      "cs.AI",
+      "stat.ML",
+      "stat.ME",
+      "stat.CO",
+      "stat.TH",
+      "stat.AP"
+    ],
+    "tier3": [
+      "physics.chem-ph",
+      "physics.data-an",
+      "physics.gen-ph",
+      "nucl-th",
+      "math.NT",
+      "cs.CC",
+      "physics.ed-ph"
+    ],
+    "tier4": [
+      "q-fin.CP",
+      "q-fin.GN",
+      "q-fin.PM",
+      "q-fin.PR",
+      "q-fin.RM",
+      "q-fin.ST",
+      "q-fin.TR",
+      "cs.CR",
+      "cs.CY"
+    ]
+  }
+}

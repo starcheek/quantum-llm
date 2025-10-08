@@ -1,0 +1,25 @@
+# Core dependencies
+neo4j>=5.0.0
+langchain>=0.1.0
+langchain-openai>=0.1.0
+openai>=1.0.0
+pydantic>=2.6.0
+
+# Data processing
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Development tools
+pytest>=6.0.0
+black>=21.0.0
+flake8>=3.9.0
+
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# arXiv data fetcher dependencies
+feedparser>=6.0.0
+tqdm>=4.60.0
+
+# CLI dependencies
+typer>=0.9.0

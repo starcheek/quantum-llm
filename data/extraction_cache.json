@@ -1,0 +1,462 @@
+{
+  "ab6b906fcc479808de249f1bfa9e413513e7c488da66331ca3e08c89d7578948": {
+    "concepts": [
+      {
+        "name": "Quantum Error Correction",
+        "importance": "high"
+      },
+      {
+        "name": "Surface Codes",
+        "importance": "high"
+      },
+      {
+        "name": "Scalability",
+        "importance": "medium"
+      },
+      {
+        "name": "Threshold",
+        "importance": "medium"
+      },
+      {
+        "name": "Realistic Noise",
+        "importance": "medium"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Quantum Error Correction",
+        "concept_b": "Surface Codes",
+        "relationship_type": "uses",
+        "description": "Quantum error correction is implemented using surface codes."
+      },
+      {
+        "concept_a": "Surface Codes",
+        "concept_b": "Scalability",
+        "relationship_type": "enhances",
+        "description": "Surface codes provide a scalable approach to quantum error correction."
+      },
+      {
+        "concept_a": "Surface Codes",
+        "concept_b": "Threshold",
+        "relationship_type": "improves",
+        "description": "The protocol improves the threshold for error correction under realistic noise."
+      },
+      {
+        "concept_a": "Realistic Noise",
+        "concept_b": "Threshold",
+        "relationship_type": "affects",
+        "description": "Realistic noise conditions impact the threshold for error correction."
+      }
+    ]
+  },
+  "7f5b67be54d74cfa0a932b333ac15ce662ca7fd0736b3a3432980b7f403957a1": {
+    "concepts": [
+      {
+        "name": "Topological Qubits",
+        "importance": "high"
+      },
+      {
+        "name": "Majorana-based Qubits",
+        "importance": "high"
+      },
+      {
+        "name": "Fabrication Challenges",
+        "importance": "medium"
+      },
+      {
+        "name": "Readout Fidelity",
+        "importance": "medium"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Topological Qubits",
+        "concept_b": "Majorana-based Qubits",
+        "relationship_type": "is_a",
+        "description": "Majorana-based qubits are a type of topological qubit."
+      },
+      {
+        "concept_a": "Topological Qubits",
+        "concept_b": "Fabrication Challenges",
+        "relationship_type": "has",
+        "description": "Topological qubits face fabrication challenges."
+      },
+      {
+        "concept_a": "Topological Qubits",
+        "concept_b": "Readout Fidelity",
+        "relationship_type": "has",
+        "description": "Topological qubits are associated with readout fidelity issues."
+      }
+    ]
+  },
+  "f25bdd0bbacb170fd130e80088da9e9efedf550437a27005e26388be98623364": {
+    "concepts": [
+      {
+        "name": "Rydberg-atom arrays",
+        "importance": "high"
+      },
+      {
+        "name": "quantum simulation",
+        "importance": "high"
+      },
+      {
+        "name": "Ising models",
+        "importance": "medium"
+      },
+      {
+        "name": "long-range interactions",
+        "importance": "medium"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Rydberg-atom arrays",
+        "concept_b": "quantum simulation",
+        "relationship_type": "enables",
+        "description": "Rydberg-atom arrays enable robust quantum simulation."
+      },
+      {
+        "concept_a": "quantum simulation",
+        "concept_b": "Ising models",
+        "relationship_type": "applies to",
+        "description": "Quantum simulation is applied to Ising models."
+      },
+      {
+        "concept_a": "Ising models",
+        "concept_b": "long-range interactions",
+        "relationship_type": "involves",
+        "description": "Ising models involve long-range interactions."
+      }
+    ]
+  },
+  "b524183110a1cf7e7f1387cc788e9ccbfe3eb196fcb9a96bdc27b5ac8de9f001": {
+    "concepts": [
+      {
+        "name": "Error Mitigation",
+        "importance": "high"
+      },
+      {
+        "name": "Probabilistic Circuits",
+        "importance": "high"
+      },
+      {
+        "name": "Bias Reduction",
+        "importance": "medium"
+      },
+      {
+        "name": "Noisy Intermediate-Scale Quantum (NISQ) Circuits",
+        "importance": "high"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Error Mitigation",
+        "concept_b": "Probabilistic Circuits",
+        "relationship_type": "uses",
+        "description": "Error mitigation techniques utilize probabilistic circuits."
+      },
+      {
+        "concept_a": "Probabilistic Circuits",
+        "concept_b": "Bias Reduction",
+        "relationship_type": "achieves",
+        "description": "Probabilistic circuits help achieve bias reduction."
+      },
+      {
+        "concept_a": "Bias Reduction",
+        "concept_b": "Noisy Intermediate-Scale Quantum (NISQ) Circuits",
+        "relationship_type": "applies_to",
+        "description": "Bias reduction techniques are applied to NISQ circuits."
+      }
+    ]
+  },
+  "958d41990e46aa327f177bf2826b92c2ce8ba3a12d5e68084edeb5e42e2a1179": {
+    "concepts": [
+      {
+        "name": "Quantum Advantage",
+        "importance": "high"
+      },
+      {
+        "name": "QAOA Variants",
+        "importance": "high"
+      },
+      {
+        "name": "Combinatorial Optimization",
+        "importance": "medium"
+      },
+      {
+        "name": "Empirical Study",
+        "importance": "medium"
+      },
+      {
+        "name": "Conditions",
+        "importance": "low"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "QAOA Variants",
+        "concept_b": "Combinatorial Optimization",
+        "relationship_type": "applies_to",
+        "description": "QAOA variants are used for solving combinatorial optimization problems."
+      },
+      {
+        "concept_a": "Quantum Advantage",
+        "concept_b": "QAOA Variants",
+        "relationship_type": "investigates",
+        "description": "The study investigates conditions under which QAOA variants provide quantum advantage."
+      },
+      {
+        "concept_a": "Empirical Study",
+        "concept_b": "QAOA Variants",
+        "relationship_type": "compares",
+        "description": "The empirical study compares different QAOA variants."
+      }
+    ]
+  },
+  "c7c19c2b8b2df7799f9b52f59a13359f544370266f612c8d0f44217a8d98fd1a": {
+    "concepts": [
+      {
+        "name": "Photonic Quantum Computing",
+        "importance": "high"
+      },
+      {
+        "name": "Monolithic Photonic Platform",
+        "importance": "high"
+      },
+      {
+        "name": "Sources",
+        "importance": "medium"
+      },
+      {
+        "name": "Interferometers",
+        "importance": "medium"
+      },
+      {
+        "name": "SNSPDs",
+        "importance": "medium"
+      },
+      {
+        "name": "Scalable Quantum Photonics",
+        "importance": "high"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Monolithic Photonic Platform",
+        "concept_b": "Sources",
+        "relationship_type": "integrates",
+        "description": "The monolithic photonic platform integrates sources for quantum computing."
+      },
+      {
+        "concept_a": "Monolithic Photonic Platform",
+        "concept_b": "Interferometers",
+        "relationship_type": "integrates",
+        "description": "The monolithic photonic platform integrates interferometers for quantum computing."
+      },
+      {
+        "concept_a": "Monolithic Photonic Platform",
+        "concept_b": "SNSPDs",
+        "relationship_type": "integrates",
+        "description": "The monolithic photonic platform integrates SNSPDs for quantum computing."
+      },
+      {
+        "concept_a": "Monolithic Photonic Platform",
+        "concept_b": "Scalable Quantum Photonics",
+        "relationship_type": "enables",
+        "description": "The monolithic photonic platform enables scalable quantum photonics."
+      }
+    ]
+  },
+  "14dc3e307ab4bddaa75829f57efb64766d8684bfd5935c5f6457a04eee6b7cda": {
+    "concepts": [
+      {
+        "name": "Randomized Compiling",
+        "importance": "high"
+      },
+      {
+        "name": "Quantum Devices",
+        "importance": "high"
+      },
+      {
+        "name": "Hardware Backends",
+        "importance": "medium"
+      },
+      {
+        "name": "Coherent Noise",
+        "importance": "medium"
+      },
+      {
+        "name": "Logical Error Rates",
+        "importance": "high"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Randomized Compiling",
+        "concept_b": "Quantum Devices",
+        "relationship_type": "evaluates",
+        "description": "Randomized compiling is evaluated across quantum devices."
+      },
+      {
+        "concept_a": "Quantum Devices",
+        "concept_b": "Hardware Backends",
+        "relationship_type": "correlation",
+        "description": "Quantum devices are evaluated across different hardware backends."
+      },
+      {
+        "concept_a": "Coherent Noise",
+        "concept_b": "Logical Error Rates",
+        "relationship_type": "correlation",
+        "description": "There are correlations between coherent noise and logical error rates."
+      }
+    ]
+  },
+  "a6d2c44f21ff98b2257eb153a86062d6703cd4eb60394e1e3b7b03d7a80a6e4b": {
+    "concepts": [
+      {
+        "name": "Quantum Machine Learning",
+        "importance": "high"
+      },
+      {
+        "name": "Materials Discovery",
+        "importance": "high"
+      },
+      {
+        "name": "Kernel Methods",
+        "importance": "medium"
+      },
+      {
+        "name": "Variational Circuits",
+        "importance": "medium"
+      },
+      {
+        "name": "Superconducting Transition Temperatures",
+        "importance": "high"
+      },
+      {
+        "name": "Crystal Descriptors",
+        "importance": "medium"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Quantum Machine Learning",
+        "concept_b": "Materials Discovery",
+        "relationship_type": "applies to",
+        "description": "Quantum Machine Learning techniques are applied to the field of Materials Discovery."
+      },
+      {
+        "concept_a": "Kernel Methods",
+        "concept_b": "Superconducting Transition Temperatures",
+        "relationship_type": "predicts",
+        "description": "Kernel Methods are used to predict Superconducting Transition Temperatures."
+      },
+      {
+        "concept_a": "Variational Circuits",
+        "concept_b": "Superconducting Transition Temperatures",
+        "relationship_type": "predicts",
+        "description": "Variational Circuits are used to predict Superconducting Transition Temperatures."
+      },
+      {
+        "concept_a": "Crystal Descriptors",
+        "concept_b": "Superconducting Transition Temperatures",
+        "relationship_type": "input for",
+        "description": "Crystal Descriptors serve as input for predicting Superconducting Transition Temperatures."
+      }
+    ]
+  },
+  "5221c36b386e1ef52d510eed3dba0b1e1e843d4a4d74f7037af9aab198da2b68": {
+    "concepts": [
+      {
+        "name": "Cryogenic Control Electronics",
+        "importance": "high"
+      },
+      {
+        "name": "Qubit Scaling",
+        "importance": "high"
+      },
+      {
+        "name": "Low-Power",
+        "importance": "medium"
+      },
+      {
+        "name": "Multiplexed Readout",
+        "importance": "medium"
+      },
+      {
+        "name": "Superconducting Qubits",
+        "importance": "high"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "Cryogenic Control Electronics",
+        "concept_b": "Qubit Scaling",
+        "relationship_type": "enables",
+        "description": "Cryogenic control electronics enable scalable qubit scaling."
+      },
+      {
+        "concept_a": "Cryogenic Control Electronics",
+        "concept_b": "Multiplexed Readout",
+        "relationship_type": "supports",
+        "description": "Cryogenic control electronics support multiplexed readout."
+      },
+      {
+        "concept_a": "Multiplexed Readout",
+        "concept_b": "Superconducting Qubits",
+        "relationship_type": "applies_to",
+        "description": "Multiplexed readout applies to superconducting qubits."
+      },
+      {
+        "concept_a": "Cryogenic Control Electronics",
+        "concept_b": "Low-Power",
+        "relationship_type": "characterized_by",
+        "description": "Cryogenic control electronics are characterized by low power consumption."
+      }
+    ]
+  },
+  "5d5373e33116c04147405ad11694e35e86e0324dc37e63890f9bfd3f5f032fd4": {
+    "concepts": [
+      {
+        "name": "LDPC Codes",
+        "importance": "high"
+      },
+      {
+        "name": "Fault-Tolerant Quantum Computing",
+        "importance": "high"
+      },
+      {
+        "name": "Distance Improvement",
+        "importance": "medium"
+      },
+      {
+        "name": "Decoders",
+        "importance": "medium"
+      },
+      {
+        "name": "Circuit-Level Noise Models",
+        "importance": "medium"
+      }
+    ],
+    "relationships": [
+      {
+        "concept_a": "LDPC Codes",
+        "concept_b": "Fault-Tolerant Quantum Computing",
+        "relationship_type": "supports",
+        "description": "LDPC codes are proposed to enhance fault tolerance in quantum computing."
+      },
+      {
+        "concept_a": "LDPC Codes",
+        "concept_b": "Distance Improvement",
+        "relationship_type": "enhances",
+        "description": "The construction of LDPC codes aims to improve their distance."
+      },
+      {
+        "concept_a": "Decoders",
+        "concept_b": "Circuit-Level Noise Models",
+        "relationship_type": "tailored for",
+        "description": "Decoders are developed specifically for circuit-level noise models."
+      }
+    ]
+  }
+}
