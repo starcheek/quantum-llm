@@ -64,9 +64,9 @@ def extract_paper_entities(title: str, abstract: str, *, api_key: str, model: st
     return PaperExtraction.model_validate(data)
 
 
-def get_cache_key(doi: str, title: str, abstract: str) -> str:
+def get_cache_key(arxiv_id: str, title: str, abstract: str) -> str:
     # Include title+abstract so updates invalidate cache
-    return _hash_text(doi + "|" + title + "|" + abstract)
+    return _hash_text(arxiv_id + "|" + title + "|" + abstract)
 
 
 def load_cache(path: str) -> dict:

@@ -102,7 +102,7 @@ class GraphQueryEngine:
 You translate user questions to Cypher for Neo4j. Use ONLY this schema:
 
 Nodes:
-  - Paper {{doi, title, abstract, date}}
+  - Paper {{arxiv_id, title, abstract, date}}
   - Year {{year}}
   - Concept {{name}}
 
@@ -126,7 +126,7 @@ CRITICAL RULES:
 
 EXAMPLES:
 - "Which year focused on X?" → MATCH (p:Paper)-[:PUBLISHED_IN]->(y:Year), (p)-[:DISCUSSES]->(c:Concept {{name: "X"}}) RETURN y.year, COUNT(p) ORDER BY COUNT(p) DESC LIMIT 1
-- "Papers about X in year Y" → MATCH (p:Paper)-[:PUBLISHED_IN]->(y:Year {{year: Y}}), (p)-[:DISCUSSES]->(c:Concept {{name: "X"}}) RETURN p.title, p.doi, p.date
+- "Papers about X in year Y" → MATCH (p:Paper)-[:PUBLISHED_IN]->(y:Year {{year: Y}}), (p)-[:DISCUSSES]->(c:Concept {{name: "X"}}) RETURN p.title, p.arxiv_id, p.date
 - "Concepts related to X" → MATCH (c:Concept {{name: "X"}})-[:RELATES_TO]->(related:Concept) RETURN related.name
 """
     
@@ -309,7 +309,7 @@ Generate search terms (one per line, no numbering):
         cypher = f"""
 MATCH (p:Paper)
 WHERE {where_clause}
-RETURN p.doi as doi, p.title as title, p.abstract as abstract, toString(p.date) as date
+RETURN p.arxiv_id as arxiv_id, p.title as title, p.abstract as abstract, toString(p.date) as date
 ORDER BY p.date DESC
 LIMIT 50
 """
@@ -320,7 +320,7 @@ LIMIT 50
         """Get all papers from database."""
         cypher = """
 MATCH (p:Paper)
-RETURN p.doi as doi, p.title as title, p.abstract as abstract, toString(p.date) as date
+RETURN p.arxiv_id as arxiv_id, p.title as title, p.abstract as abstract, toString(p.date) as date
 ORDER BY p.date DESC
 LIMIT 100
 """
@@ -340,7 +340,7 @@ LIMIT 100
         
         template = """You are a concise research assistant.
 Use the provided context (paper titles/abstracts) to answer the user question.
-Cite the DOIs of the most relevant papers at the end under "Sources".
+Cite the arXiv IDs of the most relevant papers at the end under "Sources".
 If unsure, say you are unsure.
 
 Question:
@@ -367,7 +367,7 @@ Context:
             method = f"Keyword search: {search_queries}"
         
         answer = self._synthesize_answer(question, papers)
-        sources = [paper['doi'] for paper in papers[:5]]
+        sources = [paper['arxiv_id'] for paper in papers[:5]]
         
         return {
             "question": question,

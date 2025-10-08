@@ -25,7 +25,7 @@ OPENAI_MODEL = config["llm"].get("openai_model", "gpt-4o-mini")
 CACHE_PATH = config.get("extraction", {}).get("cache_file", "data/extraction_cache.json")
 MAX_CONCEPTS = int(config.get("extraction", {}).get("max_concepts_per_paper", 7))
 
-SCHEMA = config["neo4j"]["constraints"]["paper_doi_unique"]
+SCHEMA = config["neo4j"]["constraints"]["paper_arxiv_id_unique"]
 
 # Constraint for Year uniqueness
 YEAR_CONSTRAINT = """
@@ -35,7 +35,7 @@ FOR (y:Year) REQUIRE y.year IS UNIQUE
 
 # Create/update Paper node
 UPSERT_PAPER = """
-MERGE (p:Paper {doi: $doi})
+MERGE (p:Paper {arxiv_id: $arxiv_id})
 SET  p.title = $title,
      p.abstract = $abstract,
      p.date = date($date)
@@ -45,7 +45,7 @@ SET  p.title = $title,
 CREATE_YEAR_RELATIONSHIP = """
 MERGE (y:Year {year: $year})
 WITH y
-MATCH (p:Paper {doi: $doi})
+MATCH (p:Paper {arxiv_id: $arxiv_id})
 MERGE (p)-[:PUBLISHED_IN]->(y)
 """
 
@@ -66,7 +66,7 @@ def main():
             for row in reader:
                 # Create/update Paper node
                 s.run(UPSERT_PAPER, {
-                    "doi": row["doi"],
+                    "arxiv_id": row["arxiv_id"],
                     "title": row["title"],
                     "abstract": row["abstract"],
                     "date": row["date"],  # YYYY-MM-DD
@@ -77,15 +77,15 @@ def main():
                 
                 # Create Year node and PUBLISHED_IN relationship
                 s.run(CREATE_YEAR_RELATIONSHIP, {
-                    "doi": row["doi"],
+                    "arxiv_id": row["arxiv_id"],
                     "year": year
                 })
 
                 # LLM structured extraction with caching
-                doi = row["doi"]
+                arxiv_id = row["arxiv_id"]
                 title = row["title"]
                 abstract = row["abstract"]
-                cache_key = get_cache_key(doi, title, abstract)
+                cache_key = get_cache_key(arxiv_id, title, abstract)
 
                 if cache_key in cache:
                     extraction = cache[cache_key]
@@ -105,11 +105,11 @@ def main():
                         """
                         MERGE (k:Concept {name: $name})
                         WITH k
-                        MATCH (p:Paper {doi: $doi})
+                        MATCH (p:Paper {arxiv_id: $arxiv_id})
                         MERGE (p)-[r:DISCUSSES]->(k)
                         ON CREATE SET r.importance = $importance
                         """,
-                        {"name": name, "doi": doi, "importance": importance}
+                        {"name": name, "arxiv_id": arxiv_id, "importance": importance}
                     )
 
                 # Upsert Concept relationships as RELATES_TO with type property
