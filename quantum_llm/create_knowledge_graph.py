@@ -64,16 +64,23 @@ def main():
             reader = csv.DictReader(f)
             paper_count = 0
             for row in reader:
+                # Extract date part from ISO datetime string (YYYY-MM-DDTHH:MM:SSZ -> YYYY-MM-DD)
+                date_str = row["date"]
+                if "T" in date_str:
+                    date_only = date_str.split("T")[0]  # Extract YYYY-MM-DD part
+                else:
+                    date_only = date_str
+                
                 # Create/update Paper node
                 s.run(UPSERT_PAPER, {
                     "arxiv_id": row["arxiv_id"],
                     "title": row["title"],
                     "abstract": row["abstract"],
-                    "date": row["date"],  # YYYY-MM-DD
+                    "date": date_only,  # YYYY-MM-DD
                 })
                 
                 # Extract year from date (YYYY-MM-DD format)
-                year = int(row["date"].split("-")[0])
+                year = int(date_only.split("-")[0])
                 
                 # Create Year node and PUBLISHED_IN relationship
                 s.run(CREATE_YEAR_RELATIONSHIP, {
