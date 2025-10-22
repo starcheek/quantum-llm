@@ -1,3 +1,0 @@
-[console_scripts]
-quantum-llm = quantum_llm.cli:app
-
